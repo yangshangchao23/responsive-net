@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multi-Device Navbar</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- tailwindcss 断点规则 https://www.tailwindcss.cn/docs/responsive-design -->
+    <!-- sm:640px; md:768px; lg:1024px; xl:1280px; 2xl:1536px; -->
+    <!-- 规则：移动优先、断点以上、 sm 即 @media (min-width: 640px) { ... } -->
+    <nav class="bg-white shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <h1 class="flex-shrink-0">
+            <a href="#" class="text-xl sm:text-2xl font-bold text-blue-600">YourLogo</a>
+          </h1>
+
+          <!-- 为了结构更清晰，建议拆开3个设备端写菜单栏div -->
+          <!-- 桌面端导航 (PC端显示) -->
+          <div class="hidden lg:flex space-x-8">
+            <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2">Home</a>
+            <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2">Products</a>
+            <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2">Services</a>
+            <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2">Contact</a>
+          </div>
+
+          <!-- 平板端导航 (Pad端显示部分链接) -->
+          <div class="hidden sm:flex lg:hidden space-x-4">
+            <a href="#" class="text-gray-700 hover:text-blue-600 px-2 py-2">Home</a>
+            <a href="#" class="text-gray-700 hover:text-blue-600 px-2 py-2">Products</a>
+          </div>
+
+          <!-- 移动端汉堡菜单按钮 -->
+          <button id="mobile-menu-button" class="sm:hidden py-2 px-4 rounded-md text-gray-700 hover:bg-gray-100">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <!-- <i class=" fa-solid fa-bars" id="toogle"></i> -->
+          </button>
+        </div>
+      </div>
+
+      <!-- 移动端菜单 (手机端显示) -->
+      <div id="mobile-menu" class="sm:hidden hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <a href="#" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded">Home</a>
+          <a href="#" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded">Products</a>
+          <a href="#" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded">Services</a>
+          <a href="#" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <script>
+      // 交互逻辑
+      const mobileMenuButton = document.getElementById('mobile-menu-button')
+      const mobileMenu = document.getElementById('mobile-menu')
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden')
+        // const toggle = document.getElementById('toogle')
+        // if (toggle.classList.contains('fa-bars')) {
+        //   toggle.classList.remove('fa-bars')
+        //   toggle.classList.add('fa-xmark')
+        // } else {
+        //   toggle.classList.remove('fa-xmark')
+        //   toggle.classList.add('fa-bars')
+        // }
+      })
+    </script>
+  </body>
+</html>
