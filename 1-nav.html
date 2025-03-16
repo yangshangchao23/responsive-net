@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Nav</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        list-style: none;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 64px;
+        background-color: #0082e6;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+        padding: 0 24px;
+        color: #fff;
+      }
+      nav ul li {
+        margin-left: 24px;
+        text-transform: uppercase;
+      }
+      nav a {
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      nav a.active,
+      nav a:hover {
+        background-color: #1b9bff;
+        transition: 0.5s;
+      }
+      main {
+        flex: 1;
+        background-color: rgb(79, 166, 236);
+      }
+      nav ul {
+        display: flex;
+      }
+
+      #check,
+      .menu-icon {
+        display: none;
+      }
+      /* .close {
+        display: none;
+      } */
+
+      /* max 断点以下 ；min 断点以上 */
+      @media screen and (max-width: 768px) {
+        .menu-icon {
+          display: block;
+        }
+        nav ul {
+          /* display: none; */
+          position: absolute;
+          top: 64px;
+          left: -100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          height: 80vh;
+          width: 100%;
+          transition: .3s;
+        }
+        nav ul li {
+          line-height: 60px;
+          text-align: center;
+        }
+        nav a.active,
+        nav a:hover {
+          color: #1b9bff;
+          background-color: transparent;
+        }
+        /* + 紧随其后的兄弟元素  ~ 其后的所有兄弟元素 */
+        #check:checked + ul {
+          left: 0;
+          display: block;
+        }
+        .menu-icon {
+          display: block;
+          cursor: pointer;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>My Website</h1>
+      <nav>
+        <label class="menu-icon" for="check">
+          <i class="fa-solid fa-bars" id="toogle"></i>
+          <!-- <i class="fa-solid fa-xmark close" id="toogle"></i> -->
+        </label>
+        <input type="checkbox" id="check" />
+        <ul>
+          <li><a class="active" href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main></main>
+    <script>
+      const menuIcon = document.querySelector(".menu-icon");
+      menuIcon.addEventListener("click", () => {
+        const toggle = document.getElementById("toogle");
+        if (toggle.classList.contains("fa-bars")) {
+          toggle.classList.remove("fa-bars");
+          toggle.classList.add("fa-xmark");
+        } else {
+          toggle.classList.remove("fa-xmark");
+          toggle.classList.add("fa-bars");
+        }
+      })
+    </script>
+  </body>
+</html>
